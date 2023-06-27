@@ -54,7 +54,7 @@ O primeiro passo foi separar a base para teste. Usei 20% dos dados da base para 
 
 Após o split, foi feito separado a variável alvo das variáveis explicativas
 
-![var_alvo.png](URL_da_Imagem)
+![](https://github.com/KleuberFav/Prevencao_Inadimplencia_Emprestimos/blob/main/outputs/var_alvo.png?raw=true)
 
 O próximo passo foi selecionar as variáveis numéricas, colocar em uma lista e salvar essa lista no arquivo *lista_vars_numericas.pkl*
 
@@ -71,7 +71,7 @@ Com os dados já preparados, chegou a hora de treinar o modelo, para isso usei o
 Para as variáveis categóricas fiz outro pipeline chamada *ohc_transformer*. Pedi para o *ohc_transformer* tratar os nulos com a moda de cada coluna usando *SimpleImputer e após isso criar variáveis Dummys usando *OneHotEncoder* e dropando o primeiro dummy de cada classe para diminuir o processamento e a multicolinearidade (alguns autores discordam da multicolinearidade nesse caso, mas todos concordam que aumenta a performance do processamento).
 Próximo passo foi incluir os trasnformadores dentro da lib *ColumnTransformer* que chamei de *preprocessador1*. Essa lib permite o fazer transformações em colunas usando 2 pipelines diferentes ao mesmo tempo.
 
-![pipeline.png](URL_da_Imagem)
+![](https://github.com/KleuberFav/Prevencao_Inadimplencia_Emprestimos/blob/main/outputs/pipeline.png?raw=true)
 
 O modelo a ser treinado será o CatBoost, que é um algoritmo de gradient boosting que foi projetado para lidar com dados categóricos de forma eficiente. Foi projetado para ser rápido e eficiente, com algoritmos otimizados e implementações paralelas e tem sido amplamente utilizado em competições de ciência de dados, onde se destacou por seu desempenho e capacidade de lidar com dados categóricos.
 
