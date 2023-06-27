@@ -50,7 +50,7 @@ Outros 7 arquivos auxiliares com dados históricos e de bureau dos clientes tamb
 
 O primeiro passo foi separar a base para teste. Usei 20% dos dados da base para testes, usando o *StratifiedShuffleSplit* da Sklearn para manter a distribuição das classes da variável alvo.
 
-![]([URL_da_Imagem](https://github.com/KleuberFav/Prevencao_Inadimplencia_Emprestimos/blob/main/outputs/strat_split.png))
+![](https://github.com/KleuberFav/Prevencao_Inadimplencia_Emprestimos/blob/main/outputs/strat_split.png?raw=true)
 
 Após o split, foi feito separado a variável alvo das variáveis explicativas
 
