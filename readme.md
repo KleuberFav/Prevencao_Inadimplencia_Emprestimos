@@ -77,7 +77,7 @@ O modelo a ser treinado será o CatBoost, que é um algoritmo de gradient boosti
 
 O Pipeline do Sklearn tem um mecanismo muito útil. Permite adicionar pipeline dentro de pipeline, e isso foi feito aqui. No Pipeline chamado *model* usei o *SelectKBest* que é uma lib do Sklearn que seleciona as 'k' variáveis mais importantes para o modelo usando algum critério, nesse caso usando a Informação Mútua. Além disso, foi incluído os passos anteriores e : *preprocessador1* e o *classificador*
 
-![catboost.png](URL_da_Imagem)
+![](https://github.com/KleuberFav/Prevencao_Inadimplencia_Emprestimos/blob/main/outputs/catboost.png?raw=true)
 
 ## Tuning do modelo
 
@@ -95,15 +95,15 @@ Os hiperparâmetros selecionados pra teste:
 
 Também foi utilizado a validação cruzada com k-fold, criando 5 folds.
 
-![grid.png](URL_da_Imagem)
+![](https://github.com/KleuberFav/Prevencao_Inadimplencia_Emprestimos/blob/main/outputs/grid.png?raw=true)
 
 Após testar todas as combinações, podemos ver os melhores hiperparâmetros dentre os que foram testados:
 
-![grid.png](URL_da_Imagem)
+![](https://github.com/KleuberFav/Prevencao_Inadimplencia_Emprestimos/blob/main/outputs/best_hiper.png?raw=true)
 
 ## Variáveis mais importantes para o modelo
 
-![grid.png](URL_da_Imagem)
+![](https://github.com/KleuberFav/Prevencao_Inadimplencia_Emprestimos/blob/main/outputs/var_import.png?raw=true)
 
 ## Algumas Métricas do treinamento
 
@@ -131,7 +131,7 @@ O Modelo treinado anteriormente salvo em um arquivo serializado *grid_search.pkl
 - Gini da base de Teste 51.396
 - KS da base de Teste 38.478
 
-![roc.png](URL_da_Imagem)
+![](https://github.com/KleuberFav/Prevencao_Inadimplencia_Emprestimos/blob/main/outputs/roc.png?raw=true)
 
 **O Modelo foi validado e está pronto pra fase de ajuste de Score**
 
@@ -139,7 +139,7 @@ O Modelo treinado anteriormente salvo em um arquivo serializado *grid_search.pkl
 
 Após a Validação do modelo, foi feito o ajuste do Score. Primeiro calculamos o Score de cada cliente, depois agrupamos os clientes por faixa, de acordo com cada Score.
 
-![faixas_score.png](URL_da_Imagem)
+![](https://github.com/KleuberFav/Prevencao_Inadimplencia_Emprestimos/blob/main/faixas_score.png?raw=true)
 
 Decidi separar os clientes em 3 grupos de acordo com as faixas de Score. As 3 faixas menores, decidi negar o empréstimo automaticamente, as 3 maiores decidi aprovar automaticamente e as intermediárias deixo pra área de negócio decidir. Então criei 3 dataframe usando só os clientes de cada grupo para fazer alguns testes.
 
@@ -164,13 +164,13 @@ Decidi separar os clientes em 3 grupos de acordo com as faixas de Score. As 3 fa
 
 # Sistema com Streamlit
 
-![tela_inicial.png](URL_da_Imagem)
+![](https://github.com/KleuberFav/Prevencao_Inadimplencia_Emprestimos/blob/main/outputs/tela_inicial.png?raw=true)
 
-![aprovadp.png](URL_da_Imagem)
+![](https://github.com/KleuberFav/Prevencao_Inadimplencia_Emprestimos/blob/main/outputs/aprovado.png?raw=true)
 
-![negado.png](URL_da_Imagem)
+![](https://github.com/KleuberFav/Prevencao_Inadimplencia_Emprestimos/blob/main/outputs/negado.png?raw=true)
 
-![analista.png](URL_da_Imagem)
+![](https://github.com/KleuberFav/Prevencao_Inadimplencia_Emprestimos/blob/main/outputs/analista.png?raw=true)
 
 # Sugestões
 
