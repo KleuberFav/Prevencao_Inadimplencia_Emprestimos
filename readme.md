@@ -44,6 +44,10 @@ Outros 7 arquivos auxiliares com dados históricos e de bureau dos clientes tamb
 - A pasta *inputs* contém registros de clientes pra previsão (extraídos dos dados de teste);
 - A pasta *outputs* contém todas as saídas geradas pelo código principal, incluindo o modelo serializado em .pkl;
 
+# Metadados
+
+Antes de começar a treinar o modelo, preparei os metadados, para fazer a preparação necessária para cada tipo de dados. a variável alvo (TARGET) indiquei que na role como 'target', o id dos clientes (SK_ID_CURR) indiquei na role como 'id'. Nas outras variáveis foram indicadas automaticamente pelo seu tipo, 'nominal' para as variáveis categóricas, 'ordinal' para as variáveis discretas e 'interval' para as variáveis contínuas. Também foi indicado, o tipo e a cardinalidade de cada variável
+
 # Treino
 
 ## DataPrep
@@ -174,7 +178,7 @@ Decidi separar os clientes em 3 grupos de acordo com as faixas de Score. As 3 fa
 
 # Sugestões
 
-Como o objetivo técnico desse projeto foi criar um automl usando o Pipeline e o GridSearch do Sklearn, é recomendado fazer uma análise exploratória dos dados para um melhor dataprep. Também recomendo testar outros algoritmos como Regressão Logistíca, Randomforest, LightGBM, XGBoost e hiperparâmetros diferentes. Fiz todo processamento no meu computador pessoal, então não testei tantos hiperparâmetros, seria uma boa ideia utilizar algum serviço de nuvem para testar mais algoritmos e mais hiperparâmetros. Usar mais variáveis também pode ajudar a melhorar o desempenho do modelo, recomendo usar as bases históricas e de bureau disponíveis na página da competição.
+Como o objetivo técnico desse projeto foi criar um processe rápido e limpo usando o Pipeline e o GridSearch do Sklearn, é recomendado fazer uma análise exploratória dos dados para um melhor dataprep. Também recomendo testar outros algoritmos como Regressão Logistíca, Randomforest, LightGBM, XGBoost e hiperparâmetros diferentes. Fiz todo processamento no meu computador pessoal, então não testei tantos hiperparâmetros, seria uma boa ideia utilizar algum serviço de nuvem para testar mais algoritmos e mais hiperparâmetros. Usar mais variáveis também pode ajudar a melhorar o desempenho do modelo, recomendo usar as bases históricas e de bureau disponíveis na página da competição.
 
 Outra sugestão é fazer mais ajustes nas faixas de Scores, se o objetivo é diminuir o risco de inadimpência, o recomendado é diminuir a quantidade de faixas de score no grupo de cima. Se o objetivo é não perder potenciais clientes bons, é recomendado aumentar o número de faixas do grupo de baixo. Tudo depende do objetivo do negócio.
 
