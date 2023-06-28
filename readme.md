@@ -143,7 +143,7 @@ O Modelo treinado anteriormente salvo em um arquivo serializado *grid_search.pkl
 
 Após a Validação do modelo, foi feito o ajuste do Score. Primeiro calculamos o Score de cada cliente, depois agrupamos os clientes por faixa, de acordo com cada Score.
 
-![](https://github.com/KleuberFav/Prevencao_Inadimplencia_Emprestimos/blob/main/faixas_score.png?raw=true)
+![](https://github.com/KleuberFav/Prevencao_Inadimplencia_Emprestimos/blob/main/outputs/faixas_score.png?raw=true)
 
 Decidi separar os clientes em 3 grupos de acordo com as faixas de Score. As 2 faixas menores, decidi negar o empréstimo automaticamente, as 5 maiores decidi aprovar automaticamente e as intermediárias deixo pra área de negócio decidir. Então criei 3 dataframe usando só os clientes de cada grupo para fazer alguns testes.
 
@@ -174,11 +174,11 @@ Decidi separar os clientes em 3 grupos de acordo com as faixas de Score. As 2 fa
 
 # Sistema com Streamlit
 
-![](https://github.com/KleuberFav/Prevencao_Inadimplencia_Emprestimos/blob/main/outputs/tela_inicial.png?raw=true)
+![Tela Inicial](https://github.com/KleuberFav/Prevencao_Inadimplencia_Emprestimos/blob/main/outputs/tela_inicial.png?raw=true)
 
-![](https://github.com/KleuberFav/Prevencao_Inadimplencia_Emprestimos/blob/main/outputs/aprovado.png?raw=true)
+![Aprovado](https://github.com/KleuberFav/Prevencao_Inadimplencia_Emprestimos/blob/main/outputs/aprovado.png?raw=true)
 
-![](https://github.com/KleuberFav/Prevencao_Inadimplencia_Emprestimos/blob/main/outputs/negado.png?raw=true)
+![Negado](https://github.com/KleuberFav/Prevencao_Inadimplencia_Emprestimos/blob/main/outputs/negado.png?raw=true)
 
 
 # Sugestões
