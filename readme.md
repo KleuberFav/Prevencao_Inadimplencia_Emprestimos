@@ -73,9 +73,9 @@ Próximo passo foi incluir os trasnformadores dentro da lib *ColumnTransformer* 
 
 ![](https://github.com/KleuberFav/Prevencao_Inadimplencia_Emprestimos/blob/main/outputs/pipeline.png?raw=true)
 
-O modelo a ser treinado será o CatBoost, que é um algoritmo de gradient boosting que foi projetado para lidar com dados categóricos de forma eficiente. Foi projetado para ser rápido e eficiente, com algoritmos otimizados e implementações paralelas e tem sido amplamente utilizado em competições de ciência de dados, onde se destacou por seu desempenho e capacidade de lidar com dados categóricos.
+O modelo a ser treinado será o CatBoost, que é um algoritmo de gradient boosting que foi projetado para lidar com dados categóricos de forma eficiente. Foi projetado para ser rápido e eficiente, com algoritmos otimizados e implementações paralelas e tem sido amplamente utilizado em competições de ciência de dados, onde se destacou por seu desempenho e capacidade de lidar com dados categóricos. O algoritmo utiliza a abordagem de boosting, onde um conjunto de modelos de aprendizado de máquina relativamente fracos é combinado para formar um modelo forte e preciso. Ele constrói os modelos em uma sequência, onde cada modelo sucessivo é treinado para corrigir os erros cometidos pelos modelos anteriores. O treinamento é realizado por meio do gradiente descendente, minimizando uma função de perda que mede a diferença entre as previsões e os rótulos reais do conjunto de treinamento.
 
-O Pipeline do Sklearn tem um mecanismo muito útil. Permite adicionar pipeline dentro de pipeline, e isso foi feito aqui. No Pipeline chamado *model* usei o *SelectKBest* que é uma lib do Sklearn que seleciona as 'k' variáveis mais importantes para o modelo usando algum critério, nesse caso usando a Informação Mútua. Além disso, foi incluído os passos anteriores e : *preprocessador1* e o *classificador*
+O Pipeline do Sklearn tem um mecanismo muito útil. Permite adicionar pipeline dentro de pipeline, e isso foi feito aqui. No Pipeline chamado *model* usei o *SelectKBest* que é uma lib do Sklearn que seleciona as 'k' variáveis mais importantes para o modelo usando algum critério, nesse caso usando a Informação Mútua. Além disso, foi incluído os passos anteriores : *preprocessador1* e o *classificador*
 
 ![](https://github.com/KleuberFav/Prevencao_Inadimplencia_Emprestimos/blob/main/outputs/catboost.png?raw=true)
 
@@ -174,7 +174,7 @@ Decidi separar os clientes em 3 grupos de acordo com as faixas de Score. As 3 fa
 
 # Sugestões
 
-Como o objetivo técnico desse projeto foi criar um automl usando o Pipeline e o GridSearch do Sklearn, é recomendado fazer uma análise exploratória dos dados para um melhor dataprep. Também recomendo testar outros algoritmos como Regressão Logistíca, Randomforest, LightGBM, XGBoost e hiperparâmetros diferentes. Fiz todo processamento no meu computador pessoal, então não testei tantos hiperparâmetros, seria uma boa ideia utilizar algum serviço de nuvem para testar mais algoritmos e mais hiperparâmetros. 
+Como o objetivo técnico desse projeto foi criar um automl usando o Pipeline e o GridSearch do Sklearn, é recomendado fazer uma análise exploratória dos dados para um melhor dataprep. Também recomendo testar outros algoritmos como Regressão Logistíca, Randomforest, LightGBM, XGBoost e hiperparâmetros diferentes. Fiz todo processamento no meu computador pessoal, então não testei tantos hiperparâmetros, seria uma boa ideia utilizar algum serviço de nuvem para testar mais algoritmos e mais hiperparâmetros. Usar mais variáveis também pode ajudar a melhorar o desempenho do modelo, recomendo usar as bases históricas e de bureau disponíveis na página da competição.
 
 Outra sugestão é fazer mais ajustes nas faixas de Scores, se o objetivo é diminuir o risco de inadimpência, o recomendado é diminuir a quantidade de faixas de score no grupo de cima. Se o objetivo é não perder potenciais clientes bons, é recomendado aumentar o número de faixas do grupo de baixo. Tudo depende do objetivo do negócio.
 
