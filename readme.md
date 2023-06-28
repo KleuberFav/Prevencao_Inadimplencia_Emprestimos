@@ -111,10 +111,10 @@ Após testar todas as combinações, podemos ver os melhores hiperparâmetros de
 
 ## Algumas Métricas do treinamento
 
-- Acurácia da validação cruzada: 92.07627
-- Área da Curva ROC da validação cruzada 78.485
-- Gini da validação cruzada 56.97
-- KS da validação cruzada 42.363
+- Acurácia da validação cruzada: 92.03278
+- Área da Curva ROC da validação cruzada 78.319
+- Gini da validação cruzada 56.638
+- KS da validação cruzada 42.014
 
 # Teste
 
@@ -126,7 +126,7 @@ O Modelo treinado anteriormente salvo em um arquivo serializado *grid_search.pkl
               precision    recall  f1-score   support
 
            0       0.93      0.99      0.96     56538
-           1       0.42      0.10      0.16      4965
+           1       0.43      0.10      0.16      4965
 
     accuracy                           0.92     61503
 
@@ -145,26 +145,32 @@ Após a Validação do modelo, foi feito o ajuste do Score. Primeiro calculamos 
 
 ![](https://github.com/KleuberFav/Prevencao_Inadimplencia_Emprestimos/blob/main/faixas_score.png?raw=true)
 
-Decidi separar os clientes em 3 grupos de acordo com as faixas de Score. As 3 faixas menores, decidi negar o empréstimo automaticamente, as 3 maiores decidi aprovar automaticamente e as intermediárias deixo pra área de negócio decidir. Então criei 3 dataframe usando só os clientes de cada grupo para fazer alguns testes.
+Decidi separar os clientes em 3 grupos de acordo com as faixas de Score. As 2 faixas menores, decidi negar o empréstimo automaticamente, as 5 maiores decidi aprovar automaticamente e as intermediárias deixo pra área de negócio decidir. Então criei 3 dataframe usando só os clientes de cada grupo para fazer alguns testes.
 
 **Faixas Maiores**
 
-- Nas 3 faixas de cima, em 18451 empréstimos com default previstas pelo modelo, em 363 ele afirma errôneamente que não é Default;
-- Aprova automaticamente 31.99 % dos empréstimos 'bons';
-- Aproximadamente 7.31 % dos empréstimos 'ruins' estão nas faixas maiores
+- Nas faixas de cima, em 30751 empréstimos com default previstas pelo modelo, em 894 ele afirma errôneamente que não é Default;
+- Aprova automaticamente 52.81 % dos empréstimos 'bons';
+- Aproximadamente 18.01 % dos empréstimos 'ruins' estão nas faixas maiores
 
 **Faixas Menores**
 
-- Nas 3 faixas de baixo, possui 9732 Operações sem Default;
-- Ou seja, aproximadamente 17.21 % dos empréstimos 'bons' serão recusados;
-- Evita prejuizos em cerca de 51.74 % dos empréstimos 'ruins'.
+- Nas faixas de baixo, possui 9706 Operações sem Default;
+- Aproximadamente 17.17 % dos empréstimos 'bons' serão recusados;
+- Evita prejuizos em cerca de 52.27 % dos empréstimos 'ruins'.
 
 **Faixas Intermediárias**
 
-- Aproximadamente 30.65 % dos empréstimos 'ruins' estão nas faixas intermediárias
-- Aproximadamente 29.94 % dos empréstimos 'bons' estão nas faixas intermediárias
+- Aproximadamente 29.73 % dos empréstimos 'ruins' estão nas faixas intermediárias
+- Aproximadamente 30.02 % dos empréstimos 'bons' estão nas faixas intermediárias
 
 **Como o sistema aprova apenas 7.31% dos empréstimos ruins, aprova 1/3 dos empréstimos bons, evita mais da metade dos empréstimos ruins e só recusa 17.21% dos empréstimos bons, decidi aprovar esse sistema pra entrar em produção.**
+
+*Regras do sistema*
+
+- Scores acima de 0.898090 serão aprovados automaticamente;
+- Scores iguais ou abaixo de 0.788517 serão negados automaticamente;
+- Scores acima de 0.788517 e abaixo de 0.898090 serão enviados para um analista.
 
 # Sistema com Streamlit
 
@@ -174,7 +180,6 @@ Decidi separar os clientes em 3 grupos de acordo com as faixas de Score. As 3 fa
 
 ![](https://github.com/KleuberFav/Prevencao_Inadimplencia_Emprestimos/blob/main/outputs/negado.png?raw=true)
 
-![](https://github.com/KleuberFav/Prevencao_Inadimplencia_Emprestimos/blob/main/outputs/analista.png?raw=true)
 
 # Sugestões
 
