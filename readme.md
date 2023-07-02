@@ -196,7 +196,14 @@ Decidi separar os clientes em 3 grupos de acordo com as faixas de Score. As 2 fa
 
 ![Aprovado](https://github.com/KleuberFav/Prevencao_Inadimplencia_Emprestimos/blob/main/outputs/aprovado.png?raw=true)
 
-![Negado](https://github.com/KleuberFav/Prevencao_Inadimplencia_Emprestimos/blob/main/outputs/negado.png?raw=true)
+
+# Resultados
+
+- Cerca de 52% dos empréstimos bons foram aprovados automaticamente. A importância de aprovar os bons clientes é que isso ajuda a fidelizar esses clientes;
+- Cerca de 52% dos empréstimos que entrariam em Default foram rejeitados automaticamente. Ou seja, evita um pouco mais da metade dos prejuízos causados pela inadimplência;
+- Aprova menos de 20% dos empréstimos ruins, algo que a área de negócio deve definir se é um número aceitável;
+- Rejeita cerca de 17% dos empréstimos que seriam pagos no tempo certo, algo que a área de negócio deve definir se é aceitável;
+- Em torno de 30% dos empréstimos bons serão analisados por um especialista, então são negócios bons que ainda podem ser aprovados.
 
 
 # Sugestões
