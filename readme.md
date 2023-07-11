@@ -116,10 +116,10 @@ Após testar todas as combinações, podemos ver os melhores hiperparâmetros de
 
 ## Algumas Métricas do treinamento
 
-- Acurácia da validação cruzada: 92.03278
-- Área da Curva ROC da validação cruzada 78.319
-- Gini da validação cruzada 56.638
-- KS da validação cruzada 42.014
+- Acurácia da validação cruzada: 92.05392
+- Área da Curva ROC da validação cruzada 78.476
+- Gini da validação cruzada 56.952
+- KS da validação cruzada 42.341
 
 **Acurácia**
 Mede a proporção de instâncias classificadas corretamente em relação ao total de instâncias. É expressa como um valor entre 0 e 1, onde 1 indica uma classificação perfeita, em que todas as instâncias são classificadas corretamente, e 0 indica uma classificação completamente incorreta. Embora a acurácia seja uma métrica simples e fácil de entender, ela pode ser enganosa em certos casos, principalmente quando há um desequilíbrio significativo entre as classes, que é o caso desse projeto, onde temos poucos casos de inadimplência.
@@ -148,12 +148,16 @@ O Modelo treinado anteriormente salvo em um arquivo serializado *grid_search.pkl
 
     accuracy                           0.92     61503
 
-- Acurácia da base de Teste: 91.60854
-- Área da Curva ROC da base de Teste 75.698
-- Gini da base de Teste 51.396
-- KS da base de Teste 38.478
+- Acurácia da base de Teste: 91.66382
+- Área da Curva ROC da base de Teste 75.797
+- Gini da base de Teste 51.594
+- KS da base de Teste 38.897
 
 ![](https://github.com/KleuberFav/Prevencao_Inadimplencia_Emprestimos/blob/main/outputs/roc.png?raw=true)
+
+Sicsu (2010) afirma que um KS entre 30% e 40% está próximo ao excelente quando se trata da eficácia de modelos de *Credit Score*.
+
+Sicsu (2010) também afirma que um modelo cuja AUC ROC é igual ou superior a 70 é considerado satisfatório quando se trata de modelos de *Credit Score*.
 
 **O Modelo foi validado e está pronto pra fase de ajuste de Score**
 
@@ -163,32 +167,32 @@ Após a Validação do modelo, foi feito o ajuste do Score. Primeiro calculamos 
 
 ![](https://github.com/KleuberFav/Prevencao_Inadimplencia_Emprestimos/blob/main/outputs/faixas_score.png?raw=true)
 
-Decidi separar os clientes em 3 grupos de acordo com as faixas de Score. As 2 faixas menores, decidi negar o empréstimo automaticamente, as 5 maiores decidi aprovar automaticamente e as intermediárias deixo pra área de negócio decidir. Então criei 3 dataframe usando só os clientes de cada grupo para fazer alguns testes.
+Decidi separar os clientes em 3 grupos de acordo com as faixas de Score. As 2 faixas menores, decidi negar o empréstimo automaticamente, as 5 maiores decidi aprovar automaticamente e as intermediárias (zona cinza) deixo pra área de negócio decidir. Então criei 3 dataframe usando só os clientes de cada grupo para fazer alguns testes.
 
-**Faixas Maiores**
+**Faixas 5 a 9**
 
-- Nas faixas de cima, em 30751 empréstimos com default previstas pelo modelo, em 894 ele afirma errôneamente que não é Default;
-- Aprova automaticamente 52.81 % dos empréstimos 'bons';
-- Aproximadamente 18.01 % dos empréstimos 'ruins' estão nas faixas maiores
+- Nessas faixas, em 30751 empréstimos com default previstas pelo modelo, em 888 ele afirma errôneamente que não é Defaul;
+- Aprova automaticamente 52.82 % dos empréstimos 'bons';
+- Aproximadamente 17.89 % dos empréstimos 'ruins' estão nas faixas maiores
 
-**Faixas Menores**
+**Faixas 0 e 1**
 
-- Nas faixas de baixo, possui 9706 Operações sem Default;
-- Aproximadamente 17.17 % dos empréstimos 'bons' serão recusados;
-- Evita prejuizos em cerca de 52.27 % dos empréstimos 'ruins'.
+- Nessas faixas, possui 9718 Operações sem Default;
+- Aproximadamente 17.19 % dos empréstimos 'bons' serão recusados;
+- Evita prejuizos em cerca de 52.02 % dos empréstimos 'ruins'.
 
-**Faixas Intermediárias**
+**Faixas 2 a 4**
 
-- Aproximadamente 29.73 % dos empréstimos 'ruins' estão nas faixas intermediárias
-- Aproximadamente 30.02 % dos empréstimos 'bons' estão nas faixas intermediárias
+- Aproximadamente 30.09 % dos empréstimos 'ruins' estão nas faixas intermediárias
+- Aproximadamente 29.99 % dos empréstimos 'bons' estão nas faixas intermediárias
 
-**Como o sistema aprova apenas 7.31% dos empréstimos ruins, aprova 1/3 dos empréstimos bons, evita mais da metade dos empréstimos ruins e só recusa 17.21% dos empréstimos bons, decidi aprovar esse sistema pra entrar em produção.**
+**Como o sistema aprova menos de 1/5 dos empréstimos ruins, aprova mais da metade dos empréstimos bons, evita mais da metade dos empréstimos ruins e só recusa 17.19% dos empréstimos bons, decidi aprovar esse sistema pra entrar em produção.**
 
 *Regras do sistema*
 
-- Scores acima de 0.898090 serão aprovados automaticamente;
-- Scores iguais ou abaixo de 0.788517 serão negados automaticamente;
-- Scores acima de 0.788517 e abaixo de 0.898090 serão enviados para um analista.
+- Scores acima de 0.788625 serão aprovados automaticamente;
+- Scores iguais ou abaixo de 0.788625 serão negados automaticamente;
+- Scores acima de 0.788625 e abaixo de 0.788625 serão enviados para um analista.
 
 # Sistema com Streamlit
 
