@@ -19,7 +19,7 @@ O objetivo técnico foi usar o GridSearch e o Pipeline da lib Sklearn pra treina
 ## Fonte de Dados
 
 Os dados são oriundos de uma competição no [Kaggle](https://www.kaggle.com/competitions/home-credit-default-risk/) que tinha o objetivo de garantir que os clientes capazes de pagar não sejam rejeitados e que os empréstimos sejam concedidos a clientes que sejam capaz de pagar no prazo determinado. A métrica que eles utilizaram pra avaliar os melhores modelos foi a *Área da Curva ROC*.
-Foram disponibilziados 2 arquivos principais que serão usados nesse projeto:
+Foram disponibilizados 2 arquivos principais que serão usados nesse projeto:
 *application_train.csv* que será usado pra treinar e validar o modelo;
 *application_test.csv* que originalmente na competição serviu pra avaliar os melhores modelos, mas aqui usei pra fazer predições.
 
@@ -71,20 +71,20 @@ O mesmo foi feito com as variáveis categóricas com cardinalidade <= 10, que fo
 
 Também foi feito com as variáveis categóricas com cardinalidade > 10 e foram salvas no arquivo *lista_vars_le.pkl*
 
-Após alguns testes decidi não usar as variáveis de alta cardinalidade pois não acrescentavam muito ao modelo e uma limitação do *ColumnTransformer* do Sklearn que por algum motivo que eu desconheço só permitiu usar 2 transformadores, então optei pelos trasnformadores das variáveis numéricas e os trasnformadores das variáveis categóricas de baixa cardinalidade, como veremos a seguir.
+Após alguns testes decidi não usar as variáveis de alta cardinalidade pois não acrescentavam muito ao modelo e uma limitação do *ColumnTransformer* do Sklearn que por algum motivo que eu desconheço só permitiu usar 2 transformadores, então optei pelos transformadores das variáveis numéricas e os transformadores das variáveis categóricas de baixa cardinalidade, como veremos a seguir.
 
 ## Pipeline de Treino do Modelo
 
 Com os dados já preparados, chegou a hora de treinar o modelo, para isso usei o Pipeline da *Sklearn*. Primeiramente fiz um pipeline para as variáveis numéricas, na qual chamei de *num_transformer*. Nele pedi pra tratar os nulos com a média  de cada coluna usando *SimpleImputer* e após isso normalizar os dados usando *StandardScaler*.
 
-Para as variáveis categóricas fiz outro pipeline chamada *ohc_transformer*. Pedi para o *ohc_transformer* tratar os nulos com a moda de cada coluna usando *SimpleImputer e após isso criar variáveis Dummys usando *OneHotEncoder* e dropando o primeiro dummy de cada classe para diminuir o processamento e a multicolinearidade (alguns autores discordam da multicolinearidade nesse caso, mas todos concordam que aumenta a performance do processamento).
-Próximo passo foi incluir os trasnformadores dentro da lib *ColumnTransformer* que chamei de *preprocessador1*. Essa lib permite o fazer transformações em colunas usando 2 pipelines diferentes ao mesmo tempo.
+Para as variáveis categóricas fiz outro pipeline chamada *ohc_transformer*. Pedi para o *ohc_transformer* tratar os nulos com a moda de cada coluna usando *SimpleImputer* e após isso criar variáveis Dummys usando *OneHotEncoder* e dropando o primeiro dummy de cada classe para diminuir o processamento e a multicolinearidade (alguns autores discordam da multicolinearidade nesse caso, mas todos concordam que aumenta a performance do processamento).
+Próximo passo foi incluir os transformadores dentro da lib *ColumnTransformer* que chamei de *preprocessador1*. Essa lib permite o fazer transformações em colunas usando 2 pipelines diferentes ao mesmo tempo.
 
 ![](https://github.com/KleuberFav/Prevencao_Inadimplencia_Emprestimos/blob/main/outputs/pipeline.png?raw=true)
 
 O modelo a ser treinado será o CatBoost, que é um algoritmo de gradient boosting que foi projetado para lidar com dados categóricos de forma eficiente. Foi projetado para ser rápido e eficiente, com algoritmos otimizados e implementações paralelas e tem sido amplamente utilizado em competições de ciência de dados, onde se destacou por seu desempenho e capacidade de lidar com dados categóricos. O algoritmo utiliza a abordagem de boosting, onde um conjunto de modelos de aprendizado de máquina relativamente fracos é combinado para formar um modelo forte e preciso. Ele constrói os modelos em uma sequência, onde cada modelo sucessivo é treinado para corrigir os erros cometidos pelos modelos anteriores. O treinamento é realizado por meio do gradiente descendente, minimizando uma função de perda que mede a diferença entre as previsões e os rótulos reais do conjunto de treinamento.
 
-O Pipeline do Sklearn tem um mecanismo muito útil. Permite adicionar pipeline dentro de outro pipeline, e isso foi feito aqui. No Pipeline chamado *model* usei o *SelectKBest* que é uma lib do Sklearn que seleciona as 'k' variáveis mais importantes para o modelo por que na maioria dos casos, menos é mais. Essa técnica de seleção de variáveis usa algum critério, nesse caso usando a Informação Mútua e você informa quantas variáveis serão usadas. Além disso, foi incluído os passos anteriores do pipeline: *preprocessador1* e o *classificador*
+O Pipeline do Sklearn tem um mecanismo muito útil que permite adicionar pipeline dentro de outro pipeline, e isso foi feito aqui. No Pipeline chamado *model* usei o *SelectKBest* que é uma lib do Sklearn que seleciona as 'k' variáveis mais importantes para o modelo pois na maioria dos casos, menos é mais. Essa técnica de seleção de variáveis necessita de algum critério, nesse caso usando a Informação Mútua e você informa quantas variáveis serão usadas. Além disso, foi incluído os passos anteriores do pipeline: *preprocessador1* e o *classificador*
 
 ![](https://github.com/KleuberFav/Prevencao_Inadimplencia_Emprestimos/blob/main/outputs/catboost.png?raw=true)
 
