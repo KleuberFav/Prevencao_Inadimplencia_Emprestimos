@@ -124,16 +124,6 @@ Após testar todas as combinações, podemos ver os melhores hiperparâmetros de
 **Acurácia**
 Mede a proporção de instâncias classificadas corretamente em relação ao total de instâncias. É expressa como um valor entre 0 e 1, onde 1 indica uma classificação perfeita, em que todas as instâncias são classificadas corretamente, e 0 indica uma classificação completamente incorreta. Embora a acurácia seja uma métrica simples e fácil de entender, ela pode ser enganosa em certos casos, principalmente quando há um desequilíbrio significativo entre as classes, que é o caso desse projeto, onde temos poucos casos de inadimplência.
 
-**Área da Curva ROC**
-A área sob a curva ROC é uma medida da capacidade discriminativa do modelo. Ela representa a probabilidade de que um exemplo positivo escolhido aleatoriamente seja classificado corretamente em relação a um exemplo negativo escolhido aleatoriamente. Quanto maior a área sob a curva ROC, melhor é o desempenho do modelo em distinguir entre as classes. A área sob a curva ROC varia entre 0.0 e 1.0. Uma área de 0.5 indica um modelo que possui um desempenho semelhante ao de um classificador aleatório, enquanto uma área de 1.0 indica um classificador perfeito, que é capaz de separar perfeitamente as classes positiva e negativa.
-
-**Gini**
-
-Ele mede a impureza das classes em um determinado ponto de divisão, também conhecido como critério de divisão de Gini. Mede a probabilidade de um exemplo escolhido aleatoriamente ser incorretamente classificado ao ser atribuído aleatoriamente a uma das classes. Quanto menor o valor do índice de Gini, melhor é a pureza da divisão. O índice de Gini varia de 0 a 1, onde 0 indica uma divisão perfeitamente pura, onde todos os exemplos pertencem a uma única classe, e 1 indica uma divisão impura, onde a distribuição das classes é uniforme.
-
-**KS**
-O KS (Kolmogorov-Smirnov) é uma métrica comumente usada em machine learning para avaliar a qualidade de um modelo preditivo, principalmente em problemas de classificação binária. Essa métrica é usada para medir a capacidade do modelo de distinguir entre duas classes, geralmente a classe positiva e a classe negativa. O valor do KS varia entre 0 e 1. Quanto maior o valor do KS, melhor o modelo é em distinguir as duas classes. Um valor de KS próximo a 1 indica uma separação clara entre as classes, enquanto um valor próximo a 0 indica que o modelo não é capaz de diferenciar adequadamente as classes.
-
 # Teste
 
 após a carga dos dados de testes, foram excluídas as variáveis de alta cardinalidade e a variável alvo foi separada das explicativas. 
@@ -215,6 +205,10 @@ Decidi separar os clientes em 3 grupos de acordo com as faixas de Score. As 2 fa
 Como o objetivo técnico desse projeto foi criar um processe rápido e limpo usando o Pipeline e o GridSearch do Sklearn, é recomendado fazer uma análise exploratória dos dados para um melhor dataprep. Também recomendo testar outros algoritmos como Regressão Logistíca, Randomforest, LightGBM, XGBoost e hiperparâmetros diferentes. Fiz todo processamento no meu computador pessoal, então não testei tantos hiperparâmetros, seria uma boa ideia utilizar algum serviço de nuvem para testar mais algoritmos e mais hiperparâmetros. Testar outras variáveis também pode ajudar a melhorar o desempenho do modelo, recomendo usar as bases históricas e de bureau disponíveis na página da competição.
 
 Outra sugestão é fazer mais ajustes nas faixas de Scores, se o objetivo é diminuir o risco de inadimpência, o recomendado é diminuir a quantidade de faixas de score no grupo de cima. Se o objetivo é não perder potenciais clientes bons, é recomendado aumentar o número de faixas do grupo de baixo. Tudo depende do objetivo do negócio.
+
+# Referências
+
+Sicsú, L.S. (2010). Credit Scoring. Editora Edgard Blücher Ltda
 
 
 
